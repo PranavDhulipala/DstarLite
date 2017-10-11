@@ -7,6 +7,10 @@
 
 Link to the spreadsheet https://docs.google.com/spreadsheets/d/17pHmtAirQ_ssRiRcsVRYO3rvNcxaiY6u7N-sm8TDlV0/edit#gid=0
 
+## License
+
+This software is released under the MIT license.
+
 ## Overview
 
 Simple starter C++ project with:
