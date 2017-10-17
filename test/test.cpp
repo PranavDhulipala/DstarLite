@@ -88,6 +88,23 @@ TEST(NodeEqualTest, Equal) {
   ASSERT_EQ((n1 + n2), n3);
 }
 /**
+ * @brief checks the constructor taking Node objects functionality
+ */
+TEST(NodeConstructorTest,Equal) {
+  Node n1(21, 3);
+  Node n2(n1);
+  EXPECT_EQ(n1, n2);
+}
+/**
+ * @brief checks the setkey and getkey methods
+ */
+TEST(NodeKeyTest,True) {
+  Node n1(2, 4);
+  std::pair<double, double> key = std::make_pair(12, 43);
+  n1.setkey(key);
+  EXPECT_TRUE(n1.getkey() == key);
+}
+/**
  * @brief      Checks if the operator overloading of +,!= work.
  *
  *
@@ -181,5 +198,17 @@ TEST(PriorityQFindElementTest, ElementNotFound) {
   dsl.U.push(n5);
   dsl.U.remove(n4);
   EXPECT_TRUE(n4 != dsl.U.find(n4));
+}
+/**
+ * @brief checks the struct compare
+ */
+TEST(ComparatorTest,False) {
+  Node n1(23, 12), n2(2, 4);
+  std::pair<double, double> k1 = std::make_pair(2, 44);
+  std::pair<double, double> k2 = std::make_pair(23, 44);
+  n1.setkey(k1);
+  n2.setkey(k2);
+  compare c1;
+  EXPECT_FALSE(c1(n1, n2));
 }
 
