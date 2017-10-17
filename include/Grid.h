@@ -43,9 +43,8 @@
  *  @date   10/14/2017
  */
 
-
-#ifndef APP_GRID_H_
-#define APP_GRID_H_
+#ifndef INCLUDE_GRID_H_
+#define INCLUDE_GRID_H_
 
 #include "Node.h"
 #include<vector>
@@ -56,7 +55,7 @@
  * @brief      Class for Grid
  */
 class Grid {
-public:
+ public:
   /**
    * @var _rows is of type int used to store the number of rows of the grid
    */
@@ -68,11 +67,11 @@ public:
   /**
    * @var start is of type Node used to store the start location in the grid
    */
-	Node start;
+  Node start;
   /**
    * @var goal is of type Node used to store the goal location in the grid
    */
-	Node goal;
+  Node goal;
   /**
    * @var grid is of type vector of vector char used in the display of the grid
    */
@@ -93,8 +92,8 @@ public:
    * @param br of type Node whose x and y coordinates are used as the bottom right corner of the obstacle
    * @return void
    */
-  void obstacle(Node tl, Node br);  // method for adding obstacle blocks in the grid
-
+  // method for adding obstacle blocks in the grid
+  void obstacle(Node tl, Node br);
   /**
    * @brief Used to check if the Node is a valid one that is whether it is in the grid or not
    *
@@ -113,9 +112,7 @@ public:
   /**
    * Destructor
    */
-	~Grid();
+  ~Grid();
 };
 
-
-
-#endif /* APP_GRID_H_ */
+#endif  // INCLUDE_GRID_H_

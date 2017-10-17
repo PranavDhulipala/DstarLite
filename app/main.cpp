@@ -42,56 +42,49 @@
  *  @author Pranav Dhulipala
  *  @date   10/14/2017
  */
-
 #include "DstarLite.h"
+#include <vector>
 int main() {
-  Node start(10, 6);  //sets the start Node
-  Node goal(6, 41);  //sets the goal Node
-  Node tl(5, 7);  //sets the top corner of the obstacle
-  Node br(20, 11);  //sets the bottom corner of the obstacle
-  int km = 0;  //an int added to the key value so that when the robot moves the order in the prioirty queue remains the same
-  Grid grid(51, 51);  //sets the size of the grid
-	grid.start=start;
-	grid.goal=goal;
+  Node start(10, 6);  // sets the start Node
+  Node goal(6, 41);  // sets the goal Node
+  Node tl(5, 7);  // sets the top corner of the obstacle
+  Node br(20, 11);  // sets the bottom corner of the obstacle
+  int km = 0;  // an int added to the key value
+  Grid grid(51, 51);  // sets the size of the grid
+  grid.start = start;
+  grid.goal = goal;
   grid.obstacle(tl, br);
-
-
   DstarLite dsl;
   Node last = start;
-
+  // g values
   std::vector<std::vector<double> > g(
       grid._rows,
-      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));  //contains the g values of all the nodes in the grid initially  set to infinity
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  // rhs values
   std::vector<std::vector<double> > rhs(
       grid._rows,
-      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));  //contains the rhs values of all the nodes in the grid initially  set to infinity
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  // costs
   std::vector<std::vector<double> > cost(grid._rows,
-                                         std::vector<double>(grid._columns, 1));  //contains the cost of all the nodes in the grid initially  set to 1
+                                         std::vector<double>(grid._columns, 1));
   dsl.initialize(grid, g, rhs, km);
   dsl.computePath(grid, g, rhs, cost, km);
-
   while (start != goal) {
-
-
-  std::vector<Node> neighbours1 = dsl.getNeighbours(grid, start);
-
-    std::vector<double> costRange;  //used to store the costs of neighbours
-
+    std::vector<Node> neighbours1 = dsl.getNeighbours(grid, start);
+    std::vector<double> costRange;  // used to store the costs of neighbours
     for (auto n : neighbours1) {
       costRange.push_back(g[n._y][n._x] + cost[n._y][n._x]);
-
     }
-
     size_t index = 0;
     for (size_t i = 0; i < costRange.size(); i++) {
       if (costRange[index] > costRange[i])
-        index = i;  //index of costRange with minimum value
-
+        // index of costRange with minimum value
+        index = i;
     }
-
-    Node nextStep = neighbours1[index];  //set nextStep as the argmin of the neighbours of start
-    //std::cout << nextStep;
-    //break;
+    // argmin of the neighbours of start
+    Node nextStep = neighbours1[index];
+    // std::cout << nextStep;
+    // break;
     int y1 = nextStep._y;
     int x1 = nextStep._x;
     if (grid.grid[y1][x1] == 'u') {
@@ -99,34 +92,20 @@ int main() {
       int y2 = start._y;
       int x2 = start._x;
       grid.grid[y2][x2] = 'x';
-    }
-
-
-    else {
-
+    } else {
       km += dsl.heuristic(last, grid);
       last = start;
-
-      cost[nextStep._y][nextStep._x] = grid._rows * grid._columns + 1;  //set the value of nextStep to infinity
+      // set the value of nextStep to infinity
+      cost[nextStep._y][nextStep._x] = grid._rows * grid._columns + 1;
       std::vector<Node> neighbours2 = dsl.scan(grid, nextStep, cost, 2);
-
       for (auto n : neighbours2)
-      if (grid.grid[n._y][n._x] == 'o') {
-
-
-        dsl.updateVertex(n, g, rhs, cost, grid, km);
-      }
+        if (grid.grid[n._y][n._x] == 'o') {
+          dsl.updateVertex(n, g, rhs, cost, grid, km);
+        }
       dsl.computePath(grid, g, rhs, cost, km);
-
-
-
-
     }
-   }
-  std::cout << grid;  //print the final grid
+  }
+  std::cout << grid;  // print the final grid
   return 0;
 }
-
-
-
 

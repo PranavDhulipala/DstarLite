@@ -42,22 +42,20 @@
  *  @author Pranav Dhulipala
  *  @date   10/14/2017
  */
-
-#ifndef APP_DSTARLITE_H_
-#define APP_DSTARLITE_H_
+#ifndef INCLUDE_DSTARLITE_H_
+#define INCLUDE_DSTARLITE_H_
 #include "Node.h"
 #include "Grid.h"
 #include <algorithm>
 #include "PriorityQ.h"
 #include <cmath>
+#include <utility>
+#include <vector>
 /**
  * @brief      Class for DstarLite.
  */
-
 class DstarLite {
-public:
-
-
+ public:
   /**
    * @brief       Computes the euclidean distance between the current node and the start node
    * @param  n    an object of the class node
@@ -74,9 +72,8 @@ public:
    * @param  km    an integer
    * @return       void
    */
-  void initialize(Grid &grid, std::vector<std::vector<double> > &g,
+  void initialize(Grid grid, std::vector<std::vector<double> > g,
                   std::vector<std::vector<double> > &rhs, int km);
-
   /**
    * @brief        Finds the neighbour of the given node
    *
@@ -84,8 +81,7 @@ public:
    * @param  node  reference to an object of the class Node
    * @return       vector<Node> a vector of Node objects
    */
-
-  std::vector<Node> getNeighbours(Grid &grid, Node &node);
+  std::vector<Node> getNeighbours(Grid grid, Node node);
   /**
    * @brief        Calculates the key of the node
    *
@@ -96,11 +92,10 @@ public:
    * @param  km    an integer
    * @return       pair<double,double> Key value
    */
-  std::pair<double, double> calculateKey(Grid &grid, Node &node,
-                                         std::vector<std::vector<double> > &g,
-                                         std::vector<std::vector<double> > &rhs,
+  std::pair<double, double> calculateKey(Grid grid, Node node,
+                                         std::vector<std::vector<double> > g,
+                                         std::vector<std::vector<double> > rhs,
                                          int km);
-
   /**
    * @brief        Updates the rhs-values and keys of the potentially affected nodes
    *
@@ -110,11 +105,10 @@ public:
    * @param  grid  reference to an object of the class Grid
    * @param  km    an integer
    */
-  void updateVertex(Node &u, std::vector<std::vector<double> > &g,
+  void updateVertex(Node u, std::vector<std::vector<double> > g,
                     std::vector<std::vector<double> > &rhs,
-                    std::vector<std::vector<double> > &cost, Grid &grid,
+                    std::vector<std::vector<double> > cost, Grid grid,
                     int km);
-
   /**
    * @brief        Computes the shortest path by repeatedly expanding the locally inconsistent nodes in the order of their priorities
    *
@@ -124,15 +118,13 @@ public:
    * @param  km    an integer
    * @return       void
    */
-  void computePath(Grid & grid, std::vector<std::vector<double> > &g,
+  void computePath(Grid grid, std::vector<std::vector<double> > &g,
                    std::vector<std::vector<double> > &rhs,
-                   std::vector<std::vector<double> > &cost, int km);
-
+                   std::vector<std::vector<double> > cost, int km);
   /**
    * @var U is an object of the PriorityQ
    */
   PriorityQ<Node> U;
-
   /**
    * @brief               Scans the grid for nodes with potential to be obstacles and sets their cost to infinity
    *
@@ -142,11 +134,9 @@ public:
    * @param  scanRange    an integer
    * @return              vector<Node> a vector of Node objects
    */
-  std::vector<Node> scan(Grid &grid, Node &curr,
+  std::vector<Node> scan(Grid grid, Node curr,
                          std::vector<std::vector<double> > &cost,
                          int scanRange);
-
 };
-#endif /* APP_DSTARLITE_H_ */
-
+#endif  // INCLUDE_DSTARLITE_H_
 

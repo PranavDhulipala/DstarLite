@@ -39,14 +39,15 @@
  * @author Pranav Dhulipala
  * @version 1.0
  */
-
 #include <gtest/gtest.h>
+#include <utility>
 #include "../include/Node.h"
 #include "../app/Node.cpp"
 #include "../include/Grid.h"
 #include "../app/Grid.cpp"
 #include "../include/DstarLite.h"
 #include "../app/DstarLite.cpp"
+
 
 /**
  * @brief      Checks if the coordinates of Node are not negative.
@@ -61,7 +62,6 @@ TEST(NodeTest, NotNegative) {
     ASSERT_GE(node._x, 0);
     ASSERT_GE(node._y, 0);
   }
-
 }
 /**
  * @brief      Checks if the key values of the Node are not negative.
@@ -69,7 +69,7 @@ TEST(NodeTest, NotNegative) {
  *
  *
  */
-TEST(NodeKeyTest,NotNegative) {
+TEST(NodeKeyTest, NotNegative) {
   double k1 = 100, k2 = 50;
   std::pair<double, double> key = std::make_pair(k1, k2);
   if (key.first < 0 || key.second < 0) {
@@ -77,29 +77,25 @@ TEST(NodeKeyTest,NotNegative) {
     ASSERT_GT(key.second, 0);
   }
 }
-
 /**
  * @brief      Checks if the operator overloading of +,== work.
  *
  *
  *
  */
-TEST(NodeEqualTest,Equal) {
+TEST(NodeEqualTest, Equal) {
   Node n1(2, 4), n2(3, 6), n3(5, 10);
   ASSERT_EQ((n1 + n2), n3);
-
 }
-
 /**
  * @brief      Checks if the operator overloading of +,!= work.
  *
  *
  *
  */
-TEST(NodeNotEqualTest,NotEqual) {
+TEST(NodeNotEqualTest, NotEqual) {
   Node n1(12, 4), n2(3, 16), n3(5, 20);
   ASSERT_NE((n1 + n2), n3);
-
 }
 /**
  * @brief      Checks if the Node is in the obstacle.
@@ -108,12 +104,11 @@ TEST(NodeNotEqualTest,NotEqual) {
  *
  *
  */
-TEST(ObstacleCheck,NotInObstacle) {
+TEST(ObstacleCheck, InObstacle) {
   Node n(5, 20), tl(5, 10), br(12, 22);
   Grid grid(50, 50);
   grid.obstacle(tl, br);
-  ASSERT_TRUE(grid.grid[n._y][n._x] == 'o');
-
+  ASSERT_EQ(grid.grid[n._y][n._x], 'o');
 }
 /**
  * @brief      Checks if the Node is valid.
@@ -122,7 +117,7 @@ TEST(ObstacleCheck,NotInObstacle) {
  *
  *
  */
-TEST(NodeValid,Valid) {
+TEST(NodeValid, Valid) {
   Grid grid(50, 50);
   Node n(100, 100);
   ASSERT_FALSE(grid.isValid(n));
@@ -135,14 +130,13 @@ TEST(NodeValid,Valid) {
  *
  *
  */
-TEST(HeuristicValue,Equal) {
+TEST(HeuristicValue, Equal) {
   DstarLite dsl;
   Grid grid(50, 50);
   Node start(23, 34);
   grid.start = start;
   EXPECT_EQ(dsl.heuristic(start, grid), 0);
 }
-
 /**
  * @brief      Checks if the priority queue
  *             sorts the Nodes based on the
@@ -150,7 +144,7 @@ TEST(HeuristicValue,Equal) {
  *             Node with lowest key values.
  *             Checks if the comparator of PriorityQ works.
  */
-TEST(PriorityQMinTest,MinElementEqual) {
+TEST(PriorityQMinTest, MinElementEqual) {
   DstarLite dsl;
   Node n1(2, 4), n2(4, 4), n3(6, 7), n4(23, 34), n5(12, 42);
   std::pair<double, double> k1 = std::make_pair(2, 44);
@@ -169,7 +163,6 @@ TEST(PriorityQMinTest,MinElementEqual) {
   dsl.U.push(n4);
   dsl.U.push(n5);
   EXPECT_EQ(n5, dsl.U.top());
-
 }
 /**
  * @brief      Checks if the priority queue
@@ -178,7 +171,7 @@ TEST(PriorityQMinTest,MinElementEqual) {
  *             the PriorityQ.
  *
  */
-TEST(PriorityQFindElementTest,ElementNotFound) {
+TEST(PriorityQFindElementTest, ElementNotFound) {
   DstarLite dsl;
   Node n1(2, 4), n2(4, 4), n3(6, 7), n4(23, 34), n5(12, 42);
   dsl.U.push(n1);
@@ -189,5 +182,4 @@ TEST(PriorityQFindElementTest,ElementNotFound) {
   dsl.U.remove(n4);
   EXPECT_TRUE(n4 != dsl.U.find(n4));
 }
-
 

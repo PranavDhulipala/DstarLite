@@ -1,0 +1,18 @@
+./include/DstarLite.h:76:  Is this a non-const reference? If so, make const or use a pointer: std::vector<std::vector<double> > &rhs  [runtime/references] [2]
+./include/DstarLite.h:109:  Is this a non-const reference? If so, make const or use a pointer: std::vector<std::vector<double> > &rhs  [runtime/references] [2]
+./include/DstarLite.h:121:  Is this a non-const reference? If so, make const or use a pointer: std::vector<std::vector<double> > &g  [runtime/references] [2]
+./include/DstarLite.h:122:  Is this a non-const reference? If so, make const or use a pointer: std::vector<std::vector<double> > &rhs  [runtime/references] [2]
+./include/DstarLite.h:138:  Is this a non-const reference? If so, make const or use a pointer: std::vector<std::vector<double> > &cost  [runtime/references] [2]
+Done processing ./include/DstarLite.h
+Done processing ./include/PriorityQ.h
+Done processing ./include/Grid.h
+Done processing ./include/Node.h
+Done processing ./test/main.cpp
+Done processing ./test/test.cpp
+Done processing ./app/main.cpp
+./app/DstarLite.cpp:169:  Lines should be <= 80 characters long  [whitespace/line_length] [2]
+Done processing ./app/DstarLite.cpp
+Done processing ./app/Node.cpp
+Done processing ./app/Grid.cpp
+Total errors found: 6
+

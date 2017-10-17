@@ -43,9 +43,8 @@
  *  @date   10/14/2017
  */
 
-#ifndef APP_NODE_H_
-#define APP_NODE_H_
-
+#ifndef INCLUDE_NODE_H_
+#define INCLUDE_NODE_H_
 
 #include <utility>
 #include <iostream>
@@ -58,19 +57,19 @@ class Node {
   /**
    * @var _x of type int stores the x coordinate of the node
    */
-	int _x=0;
+  int _x = 0;
   /**
    * @var _y of type int stores the y coordinate of the node
    */
-	int _y=0;
+  int _y = 0;
   /**
    * @var _key of type pair<double,double> stores the key values of the node
    */
-	std::pair<double, double> _key=std::make_pair(0,0);
+  std::pair<double, double> _key = std::make_pair(0, 0);
   /**
    * default constructor
    */
-	Node();
+  Node();
   /**
    * Constructor taking 2 parameters
    * @param x of type int used to initialize the value of the member _x
@@ -89,12 +88,12 @@ class Node {
    * @param k is a reference of a pair<double,double>
    * @return void
    */
-  void setkey(std::pair<double, double> &k);
+  void setkey(std::pair<double, double> k);
   /**
    * @brief Gets the value of the key
    * @return the key value of type pair<double,double>
    */
-	std::pair<double, double> getkey();
+  std::pair<double, double> getkey();
   /**
    * @brief A friend to the class Node. Overloads the operator +, used to add two const Node obejcts
    *
@@ -127,22 +126,20 @@ class Node {
    * @param r is a key of type pair<double,double>
    * @return a bool value, true or false
    */
-	friend bool operator<(const Node& l,const std::pair<double,double> r){
-		        if(l._key.first<r.first)
-		            return true;
-		        else
-		        {
-		            if ((l._key.first==r.first)&&(l._key.second<r.second))
-		                return true;
-		            else
-		                return false;
-		        }
-	}
+  friend bool operator<(const Node& l, const std::pair<double, double> r) {
+    if (l._key.first < r.first) {
+      return true;
+    } else {
+      if ((l._key.first == r.first) && (l._key.second < r.second))
+        return true;
+      else
+        return false;
+    }
+  }
   /**
    * Destructor
    */
-	~Node();
+  ~Node();
 };
 
-
-#endif /* APP_NODE_H_ */
+#endif  // INCLUDE_NODE_H_

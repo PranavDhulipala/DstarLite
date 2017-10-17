@@ -42,55 +42,52 @@
  *  @author Pranav Dhulipala
  *  @date   10/14/2017
  */
-#ifndef APP_PRIORITYQ_H_
-#define APP_PRIORITYQ_H_
+#ifndef INCLUDE_PRIORITYQ_H_
+#define INCLUDE_PRIORITYQ_H_
 #include<queue>
 #include<vector>
 #include<algorithm>
 #include"Node.h"
-
 /**
  * @brief      Structure compare used as the comparator in the PriorityQ making it a min priority queue
  */
-struct compare
-{
-bool operator()(Node &l, Node &r) {
-	if(l._key.first<r._key.first)
-    return false;
-	else
-     {
-		if ((l._key.first==r._key.first)&&(l._key.second<r._key.second))
-          return false;
-		else
-          return true;
-     }
+struct compare {
+  bool operator()(const Node &l, const Node &r) {
+    if (l._key.first < r._key.first) {
+      return false;
+    } else {
+      if ((l._key.first == r._key.first) && (l._key.second < r._key.second))
+        return false;
+      else
+        return true;
     }
+  }
 };
-
 /**
  * @brief      Template Class inherits from priority queue
  */
 template<typename T>
-class PriorityQ : public std::priority_queue<T, std::vector<T>,compare>
-{
-  public:
+class PriorityQ : public std::priority_queue<T, std::vector<T>, compare> {
+ public:
   /**
    * @brief A method used to remove a particular value from the queue
    *
    * @param value a const reference to the template T
    * @return bool true or false
    */
-	bool remove(const T& value) {
-    auto it = std::find(this->c.begin(), this->c.end(), value);  //it is an iterator used to find if the desired value is present in the queue
-	        if (it != this->c.end()) {
-      this->c.erase(it);  //used to erase the element
-      std::make_heap(this->c.begin(), this->c.end(), this->comp);  //reorders the queue
-	            return true;
-	       }
-	       else {
-	        return false;
-	       }
-	 }
+  bool remove(const T& value) {
+    // finds if the desired value is present in the queue
+    auto it = std::find(this->c.begin(), this->c.end(), value);
+    if (it != this->c.end()) {
+      // used to erase the element
+      this->c.erase(it);
+      // reorders the queue
+      std::make_heap(this->c.begin(), this->c.end(), this->comp);
+      return true;
+    } else {
+      return false;
+    }
+  }
   /**
    * @brief A method to find if an element is present in the queue
    *
@@ -100,10 +97,6 @@ class PriorityQ : public std::priority_queue<T, std::vector<T>,compare>
   T find(const T& value) {
     auto it = std::find(this->c.begin(), this->c.end(), value);
     return *it;
-
   }
 };
-
-
-
-#endif /* APP_PRIORITYQ_H_ */
+#endif  // INCLUDE_PRIORITYQ_H_

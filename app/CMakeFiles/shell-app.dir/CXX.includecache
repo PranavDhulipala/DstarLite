@@ -9,18 +9,32 @@
 /home/viki/Project/DstarLite/app/DstarLite.cpp
 DstarLite.h
 /home/viki/Project/DstarLite/app/DstarLite.h
+vector
+-
+algorithm
+-
+utility
+-
 
 /home/viki/Project/DstarLite/app/Grid.cpp
 Grid.h
 /home/viki/Project/DstarLite/app/Grid.h
+algorithm
+-
+vector
+-
 
 /home/viki/Project/DstarLite/app/Node.cpp
 Node.h
 /home/viki/Project/DstarLite/app/Node.h
+utility
+-
 
 /home/viki/Project/DstarLite/app/main.cpp
 DstarLite.h
 /home/viki/Project/DstarLite/app/DstarLite.h
+vector
+-
 
 include/DstarLite.h
 Node.h
@@ -32,6 +46,10 @@ algorithm
 PriorityQ.h
 include/PriorityQ.h
 cmath
+-
+utility
+-
+vector
 -
 
 include/Grid.h
