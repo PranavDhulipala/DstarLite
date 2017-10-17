@@ -25,7 +25,7 @@ The D* Lite algorithm reuses information from previous searches to adapt to dyna
 
 Link to the spreadsheet https://docs.google.com/spreadsheets/d/17pHmtAirQ_ssRiRcsVRYO3rvNcxaiY6u7N-sm8TDlV0/edit#gid=0
 
-##License
+## License
 
 This program is under MIT License. A copy of the license can be obtained from [here](https://github.com/PranavDhulipala/DstarLite/LICENSE) 
 
@@ -50,7 +50,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-##Build Instructions
+## Build Instructions
 
 
 - Checkout the repo (and submodules)
@@ -62,7 +62,7 @@ cmake ..
 make
 ```
 
-##Running the demo
+## Running the demo
 
 
 - To start the program, in your build directory
@@ -73,7 +73,7 @@ make
 - An example of the planner can be found [here](https://postimg.org/image/1bnu7kdxcb/)
 
 
-##Running the unit tests
+## Running the unit tests
 
 
 - In your build directory
