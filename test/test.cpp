@@ -88,6 +88,15 @@ TEST(NodeEqualTest, Equal) {
   ASSERT_EQ((n1 + n2), n3);
 }
 /**
+ * @brief checks if the node default
+ *        constructor initializes
+ *        _x,_y as 0
+ */
+TEST(NodeDefaultTest,True) {
+  Node n1, n2(12, 34);
+  EXPECT_FALSE(n1 == n2);
+}
+/**
  * @brief checks the constructor taking Node objects functionality
  */
 TEST(NodeConstructorTest,Equal) {
@@ -103,6 +112,17 @@ TEST(NodeKeyTest,True) {
   std::pair<double, double> key = std::make_pair(12, 43);
   n1.setkey(key);
   EXPECT_TRUE(n1.getkey() == key);
+}
+/**
+ * @brief checks if the key value is less than
+ *        second key value
+ */
+TEST(NodeKeyCompare,LessThan) {
+  Node n1(2, 4);
+  std::pair<double, double> key = std::make_pair(12, 43);
+  n1.setkey(key);
+  std::pair<double, double> key2 = std::make_pair(12, 50);
+  EXPECT_LT(n1, key2);
 }
 /**
  * @brief      Checks if the operator overloading of +,!= work.
@@ -204,6 +224,18 @@ TEST(PriorityQFindElementTest, ElementNotFound) {
  */
 TEST(ComparatorTest,False) {
   Node n1(23, 12), n2(2, 4);
+  std::pair<double, double> k1 = std::make_pair(2, 44);
+  std::pair<double, double> k2 = std::make_pair(23, 44);
+  n1.setkey(k1);
+  n2.setkey(k2);
+  compare c1;
+  EXPECT_FALSE(c1(n1, n2));
+}
+/**
+ * @brief checks the struct compare
+ */
+TEST(ComparatorTest,True) {
+  Node n1(23, 12), n2(23, 4);
   std::pair<double, double> k1 = std::make_pair(2, 44);
   std::pair<double, double> k2 = std::make_pair(23, 44);
   n1.setkey(k1);
