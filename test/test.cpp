@@ -71,7 +71,7 @@ TEST(NodeTest, NotNegative) {
  */
 TEST(NodeKeyTest,NotNegative) {
   double k1 = 100, k2 = 50;
-  auto key = std::make_pair(k1, k2);
+  std::pair<double, double> key = std::make_pair(k1, k2);
   if (key.first < 0 || key.second < 0) {
     ASSERT_GT(key.first, 0);
     ASSERT_GT(key.second, 0);
