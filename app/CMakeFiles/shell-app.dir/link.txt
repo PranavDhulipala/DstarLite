@@ -1,1 +1,0 @@
-/usr/bin/c++ -std=c++14  -Wall -Wextra -Wpedantic -g -g   CMakeFiles/shell-app.dir/main.cpp.o CMakeFiles/shell-app.dir/Node.cpp.o CMakeFiles/shell-app.dir/Grid.cpp.o CMakeFiles/shell-app.dir/DstarLite.cpp.o  -o shell-app -rdynamic 

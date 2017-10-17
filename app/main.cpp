@@ -45,7 +45,7 @@
 #include "DstarLite.h"
 #include <vector>
 int main() {
-  Node start(10, 6);  // sets the start Node
+  Node start(20, 6);  // sets the start Node
   Node goal(6, 41);  // sets the goal Node
   Node tl(5, 7);  // sets the top corner of the obstacle
   Node br(20, 11);  // sets the bottom corner of the obstacle
