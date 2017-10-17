@@ -44,8 +44,7 @@
  */
 
 #include "DstarLite.h"
-int main()
-{
+int main() {
   Node start(10, 6);  //sets the start Node
   Node goal(6, 41);  //sets the goal Node
   Node tl(5, 7);  //sets the top corner of the obstacle
@@ -56,10 +55,10 @@ int main()
 	grid.goal=goal;
   grid.obstacle(tl, br);
 
-  
+
   DstarLite dsl;
   Node last = start;
-  
+
   std::vector<std::vector<double> > g(
       grid._rows,
       std::vector<double>(grid._columns, grid._rows * grid._columns + 1));  //contains the g values of all the nodes in the grid initially  set to infinity
@@ -110,11 +109,11 @@ int main()
 
       cost[nextStep._y][nextStep._x] = grid._rows * grid._columns + 1;  //set the value of nextStep to infinity
       std::vector<Node> neighbours2 = dsl.scan(grid, nextStep, cost, 2);
-  
+
       for (auto n : neighbours2)
       if (grid.grid[n._y][n._x] == 'o') {
 
-      
+
         dsl.updateVertex(n, g, rhs, cost, grid, km);
       }
       dsl.computePath(grid, g, rhs, cost, km);
