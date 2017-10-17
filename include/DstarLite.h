@@ -41,7 +41,6 @@ public:
   
   PriorityQ<Node> U;
 
-
   std::vector<Node> scan(Grid &grid, Node &curr,
                          std::vector<std::vector<double> > &cost,
                          int scanRange);
