@@ -1,0 +1,116 @@
+\hypertarget{test_8cpp}{}\section{test/test.cpp File Reference}
+\label{test_8cpp}\index{test/test.\+cpp@{test/test.\+cpp}}
+
+
+Unit tests for the path planner project.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}../include/\+Node.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../app/\+Node.\+cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/\+Grid.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../app/\+Grid.\+cpp\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../include/\+Dstar\+Lite.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}../app/\+Dstar\+Lite.\+cpp\char`\"{}}\\*
+Include dependency graph for test.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{test_8cpp_a61e6db502ddaabf8db6891ce2cb7aea2}{T\+E\+ST} (Node\+Test, Not\+Negative)\hypertarget{test_8cpp_a61e6db502ddaabf8db6891ce2cb7aea2}{}\label{test_8cpp_a61e6db502ddaabf8db6891ce2cb7aea2}
+
+\begin{DoxyCompactList}\small\item\em Checks if the coordinates of Node are not negative. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a25205d2841e73a0b6e1a53d91b4fb05c}{T\+E\+ST} (Node\+Key\+Test, Not\+Negative)\hypertarget{test_8cpp_a25205d2841e73a0b6e1a53d91b4fb05c}{}\label{test_8cpp_a25205d2841e73a0b6e1a53d91b4fb05c}
+
+\begin{DoxyCompactList}\small\item\em Checks if the key values of the Node are not negative. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_afdbe9030904029801d6e6d42b9339306}{T\+E\+ST} (Node\+Equal\+Test, Equal)\hypertarget{test_8cpp_afdbe9030904029801d6e6d42b9339306}{}\label{test_8cpp_afdbe9030904029801d6e6d42b9339306}
+
+\begin{DoxyCompactList}\small\item\em Checks if the operator overloading of +,== work. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ac8207678e016b3e6fd447ff3c65bcc5f}{T\+E\+ST} (Node\+Default\+Test, True)\hypertarget{test_8cpp_ac8207678e016b3e6fd447ff3c65bcc5f}{}\label{test_8cpp_ac8207678e016b3e6fd447ff3c65bcc5f}
+
+\begin{DoxyCompactList}\small\item\em checks if the node default constructor initializes \+\_\+x,\+\_\+y as 0 \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a105d0c8ac5ef006cf33680e2bef1cf21}{T\+E\+ST} (Node\+Constructor\+Test, Equal)\hypertarget{test_8cpp_a105d0c8ac5ef006cf33680e2bef1cf21}{}\label{test_8cpp_a105d0c8ac5ef006cf33680e2bef1cf21}
+
+\begin{DoxyCompactList}\small\item\em checks the constructor taking Node objects functionality \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a22c3c9be661011fa0cc5f05450ecf984}{T\+E\+ST} (Node\+Key\+Test, True)\hypertarget{test_8cpp_a22c3c9be661011fa0cc5f05450ecf984}{}\label{test_8cpp_a22c3c9be661011fa0cc5f05450ecf984}
+
+\begin{DoxyCompactList}\small\item\em checks the setkey and getkey methods \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_acfa2ebcb387d7f48852b468e787d29ac}{T\+E\+ST} (Node\+Key\+Compare, Less\+Than)\hypertarget{test_8cpp_acfa2ebcb387d7f48852b468e787d29ac}{}\label{test_8cpp_acfa2ebcb387d7f48852b468e787d29ac}
+
+\begin{DoxyCompactList}\small\item\em checks if the key value is less than second key value \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a3da76b28dc986f7a90c220d1911e0cb2}{T\+E\+ST} (Node\+Key\+Compare, True)\hypertarget{test_8cpp_a3da76b28dc986f7a90c220d1911e0cb2}{}\label{test_8cpp_a3da76b28dc986f7a90c220d1911e0cb2}
+
+\begin{DoxyCompactList}\small\item\em checks if the key value is less than second key value \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_aee978daed33a6f38a05d3a5bc6bf9bd2}{T\+E\+ST} (Node\+Key\+Compare, False)\hypertarget{test_8cpp_aee978daed33a6f38a05d3a5bc6bf9bd2}{}\label{test_8cpp_aee978daed33a6f38a05d3a5bc6bf9bd2}
+
+\begin{DoxyCompactList}\small\item\em checks if the key value is less than second key value \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a066b340f096988302025083003504d8f}{T\+E\+ST} (Node\+Not\+Equal\+Test, Not\+Equal)\hypertarget{test_8cpp_a066b340f096988302025083003504d8f}{}\label{test_8cpp_a066b340f096988302025083003504d8f}
+
+\begin{DoxyCompactList}\small\item\em Checks if the operator overloading of +,!= work. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ae8b18cc749c1fcca4ed0466c0b8692b7}{T\+E\+ST} (Obstacle\+Check, In\+Obstacle)\hypertarget{test_8cpp_ae8b18cc749c1fcca4ed0466c0b8692b7}{}\label{test_8cpp_ae8b18cc749c1fcca4ed0466c0b8692b7}
+
+\begin{DoxyCompactList}\small\item\em Checks if the Node is in the obstacle. Checks the obstacle method. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a980e4b785b3d484297525505aaded02a}{T\+E\+ST} (Node\+Valid, Valid)\hypertarget{test_8cpp_a980e4b785b3d484297525505aaded02a}{}\label{test_8cpp_a980e4b785b3d484297525505aaded02a}
+
+\begin{DoxyCompactList}\small\item\em Checks if the Node is valid. Checks the is\+Valid function. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_add2f86f4836de4dd758076ec0e260944}{T\+E\+ST} (Heuristic\+Value, Equal)\hypertarget{test_8cpp_add2f86f4836de4dd758076ec0e260944}{}\label{test_8cpp_add2f86f4836de4dd758076ec0e260944}
+
+\begin{DoxyCompactList}\small\item\em Checks if the value returned by the heuristic function is equal to the known value. Checks the heuristic function. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a652ee2762f292c526bf649055255d5cf}{T\+E\+ST} (Priority\+Q\+Min\+Test, Min\+Element\+Equal)\hypertarget{test_8cpp_a652ee2762f292c526bf649055255d5cf}{}\label{test_8cpp_a652ee2762f292c526bf649055255d5cf}
+
+\begin{DoxyCompactList}\small\item\em Checks if the priority queue sorts the Nodes based on the key values, is equal to the known Node with lowest key values. Checks if the comparator of PriorityQ works. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a818006fe7bace0e1de4bc0fad9a88e9e}{T\+E\+ST} (Priority\+Q\+Find\+Element\+Test, Element\+Not\+Found)\hypertarget{test_8cpp_a818006fe7bace0e1de4bc0fad9a88e9e}{}\label{test_8cpp_a818006fe7bace0e1de4bc0fad9a88e9e}
+
+\begin{DoxyCompactList}\small\item\em Checks if the priority queue contains the removed Node. Checks the remove and find methods of the PriorityQ. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a6b10294cece388c2d7c98aec0948846f}{T\+E\+ST} (Comparator\+Test, False)\hypertarget{test_8cpp_a6b10294cece388c2d7c98aec0948846f}{}\label{test_8cpp_a6b10294cece388c2d7c98aec0948846f}
+
+\begin{DoxyCompactList}\small\item\em checks the struct compare \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_ae6f1e8a4873ad835a1900cb8c147d9a0}{T\+E\+ST} (Comparator\+Test, True)\hypertarget{test_8cpp_ae6f1e8a4873ad835a1900cb8c147d9a0}{}\label{test_8cpp_ae6f1e8a4873ad835a1900cb8c147d9a0}
+
+\begin{DoxyCompactList}\small\item\em checks the struct compare \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a8de07acc1843389eda83f4dfdc88e067}{T\+E\+ST} (Comparator\+Test, Also\+False)\hypertarget{test_8cpp_a8de07acc1843389eda83f4dfdc88e067}{}\label{test_8cpp_a8de07acc1843389eda83f4dfdc88e067}
+
+\begin{DoxyCompactList}\small\item\em checks the struct compare \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_aced0c23f6c626326b4ee1d63c3e66466}{T\+E\+ST} (Priority\+Q\+Remove\+Element\+Test, False)\hypertarget{test_8cpp_aced0c23f6c626326b4ee1d63c3e66466}{}\label{test_8cpp_aced0c23f6c626326b4ee1d63c3e66466}
+
+\begin{DoxyCompactList}\small\item\em Checks if the priority queue contains the removed Node. \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a0b93424211b96aa26e401a08e01f657c}{T\+E\+ST} (Ostream\+Test, True)\hypertarget{test_8cpp_a0b93424211b96aa26e401a08e01f657c}{}\label{test_8cpp_a0b93424211b96aa26e401a08e01f657c}
+
+\begin{DoxyCompactList}\small\item\em checks operator $<$$<$ overload \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a88a74ac95a473843e47b4e61034d61b4}{T\+E\+ST} (Initialize\+Test, Equal)\hypertarget{test_8cpp_a88a74ac95a473843e47b4e61034d61b4}{}\label{test_8cpp_a88a74ac95a473843e47b4e61034d61b4}
+
+\begin{DoxyCompactList}\small\item\em checks if initialize method works by checking if the goal rhs is set to 0 \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a49c310aaaf73a052c8892226634610c1}{T\+E\+ST} (Neighbour\+Test, Equal)\hypertarget{test_8cpp_a49c310aaaf73a052c8892226634610c1}{}\label{test_8cpp_a49c310aaaf73a052c8892226634610c1}
+
+\begin{DoxyCompactList}\small\item\em checks the functionality of the neighbour method by checking if all the 8 neighbours are returned \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_af4b89bd05ee655d8bf93b433fd228a91}{T\+E\+ST} (Calculate\+Key\+Test, Less\+Than)\hypertarget{test_8cpp_af4b89bd05ee655d8bf93b433fd228a91}{}\label{test_8cpp_af4b89bd05ee655d8bf93b433fd228a91}
+
+\begin{DoxyCompactList}\small\item\em checks the functionality of calculate key by comparing the key values \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a88aee11a8927221451858be664e34ca3}{T\+E\+ST} (Scan\+Test, Not\+Equal)\hypertarget{test_8cpp_a88aee11a8927221451858be664e34ca3}{}\label{test_8cpp_a88aee11a8927221451858be664e34ca3}
+
+\begin{DoxyCompactList}\small\item\em checks the functionality of Scan methods by checking the vector size returned is greater than 8 the node\textquotesingle{}s actual neighbours \end{DoxyCompactList}\item 
+\hyperlink{test_8cpp_a7ffa8e347520830827c7878a33b9e011}{T\+E\+ST} (Compute\+Path\+Test, Notequal)\hypertarget{test_8cpp_a7ffa8e347520830827c7878a33b9e011}{}\label{test_8cpp_a7ffa8e347520830827c7878a33b9e011}
+
+\begin{DoxyCompactList}\small\item\em checks if the compute path and update\+Vertex methods work by checking the initial rhs value of the last node and its new value after running the functions \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Unit tests for the path planner project. 
+
+This file contains implementation of unit tests for this project
+
+\begin{DoxyAuthor}{Author}
+Pranav Dhulipala 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}

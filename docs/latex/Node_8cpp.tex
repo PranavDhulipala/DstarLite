@@ -1,0 +1,116 @@
+\hypertarget{Node_8cpp}{}\section{app/\+Node.cpp File Reference}
+\label{Node_8cpp}\index{app/\+Node.\+cpp@{app/\+Node.\+cpp}}
+
+
+Contains definitions for the Node class.  
+
+
+{\ttfamily \#include \char`\"{}Node.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$utility$>$}\\*
+Include dependency graph for Node.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{Node_8cpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{Node_8cpp__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const Node \hyperlink{Node_8cpp_a0aaf9b7cb137790dd835d7b12b335948}{operator+} (const Node \&l, const Node \&r)
+\begin{DoxyCompactList}\small\item\em A friend to the class Node. Overloads the operator +, used to add two const Node obejcts. \end{DoxyCompactList}\item 
+bool \hyperlink{Node_8cpp_a78329d67ea8594d125bd6ab292773f47}{operator==} (const Node \&l, const Node \&r)
+\begin{DoxyCompactList}\small\item\em A friend to the class Node.\+Overloads the operator ==, used to check if the two const Node elements are the same. \end{DoxyCompactList}\item 
+bool \hyperlink{Node_8cpp_a0659b04d4c436b42ac754c33eb887960}{operator!=} (const Node \&l, const Node \&r)
+\begin{DoxyCompactList}\small\item\em A friend to the class Node.\+Overloads the operator !=, used to check if the two const Node elements are different. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains definitions for the Node class. 
+
+This file has the definitions of the methods used in the Node header
+
+\begin{DoxyAuthor}{Author}
+Pranav Dhulipala 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+10/14/2017 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\index{Node.\+cpp@{Node.\+cpp}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Node.\+cpp@{Node.\+cpp}}
+\subsubsection[{\texorpdfstring{operator"!=(const Node \&l, const Node \&r)}{operator!=(const Node &l, const Node &r)}}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const Node \&}]{l, }
+\item[{const Node \&}]{r}
+\end{DoxyParamCaption}
+)}\hypertarget{Node_8cpp_a0659b04d4c436b42ac754c33eb887960}{}\label{Node_8cpp_a0659b04d4c436b42ac754c33eb887960}
+
+
+A friend to the class Node.\+Overloads the operator !=, used to check if the two const Node elements are different. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a reference of the const Node class object \\
+\hline
+{\em l} & a reference of the const Node class object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool value, true if the elements are not equal false if equal 
+\end{DoxyReturn}
+\index{Node.\+cpp@{Node.\+cpp}!operator+@{operator+}}
+\index{operator+@{operator+}!Node.\+cpp@{Node.\+cpp}}
+\subsubsection[{\texorpdfstring{operator+(const Node \&l, const Node \&r)}{operator+(const Node &l, const Node &r)}}]{\setlength{\rightskip}{0pt plus 5cm}const Node operator+ (
+\begin{DoxyParamCaption}
+\item[{const Node \&}]{l, }
+\item[{const Node \&}]{r}
+\end{DoxyParamCaption}
+)}\hypertarget{Node_8cpp_a0aaf9b7cb137790dd835d7b12b335948}{}\label{Node_8cpp_a0aaf9b7cb137790dd835d7b12b335948}
+
+
+A friend to the class Node. Overloads the operator +, used to add two const Node obejcts. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a reference of the Node class object \\
+\hline
+{\em l} & a reference of the Node class object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a const Node created by adding the \+\_\+x and \+\_\+y values of the parameters 
+\end{DoxyReturn}
+\index{Node.\+cpp@{Node.\+cpp}!operator==@{operator==}}
+\index{operator==@{operator==}!Node.\+cpp@{Node.\+cpp}}
+\subsubsection[{\texorpdfstring{operator==(const Node \&l, const Node \&r)}{operator==(const Node &l, const Node &r)}}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const Node \&}]{l, }
+\item[{const Node \&}]{r}
+\end{DoxyParamCaption}
+)}\hypertarget{Node_8cpp_a78329d67ea8594d125bd6ab292773f47}{}\label{Node_8cpp_a78329d67ea8594d125bd6ab292773f47}
+
+
+A friend to the class Node.\+Overloads the operator ==, used to check if the two const Node elements are the same. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & a reference of the const Node class object \\
+\hline
+{\em l} & a reference of the const Node class object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bool value, true if the elements are equal false if different 
+\end{DoxyReturn}
