@@ -83,8 +83,6 @@ int main() {
     }
     // argmin of the neighbours of start
     Node nextStep = neighbours1[index];
-    // std::cout << nextStep;
-    // break;
     int y1 = nextStep._y;
     int x1 = nextStep._x;
     if (grid.grid[y1][x1] == 'u') {

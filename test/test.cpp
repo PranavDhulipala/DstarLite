@@ -41,13 +41,14 @@
  */
 #include <gtest/gtest.h>
 #include <utility>
+#include <iostream>
+#include <vector>
 #include "../include/Node.h"
 #include "../app/Node.cpp"
 #include "../include/Grid.h"
 #include "../app/Grid.cpp"
 #include "../include/DstarLite.h"
 #include "../app/DstarLite.cpp"
-
 
 /**
  * @brief      Checks if the coordinates of Node are not negative.
@@ -92,14 +93,14 @@ TEST(NodeEqualTest, Equal) {
  *        constructor initializes
  *        _x,_y as 0
  */
-TEST(NodeDefaultTest,True) {
+TEST(NodeDefaultTest, True) {
   Node n1, n2(12, 34);
   EXPECT_FALSE(n1 == n2);
 }
 /**
  * @brief checks the constructor taking Node objects functionality
  */
-TEST(NodeConstructorTest,Equal) {
+TEST(NodeConstructorTest, Equal) {
   Node n1(21, 3);
   Node n2(n1);
   EXPECT_EQ(n1, n2);
@@ -107,7 +108,7 @@ TEST(NodeConstructorTest,Equal) {
 /**
  * @brief checks the setkey and getkey methods
  */
-TEST(NodeKeyTest,True) {
+TEST(NodeKeyTest, True) {
   Node n1(2, 4);
   std::pair<double, double> key = std::make_pair(12, 43);
   n1.setkey(key);
@@ -117,12 +118,34 @@ TEST(NodeKeyTest,True) {
  * @brief checks if the key value is less than
  *        second key value
  */
-TEST(NodeKeyCompare,LessThan) {
+TEST(NodeKeyCompare, LessThan) {
   Node n1(2, 4);
   std::pair<double, double> key = std::make_pair(12, 43);
   n1.setkey(key);
   std::pair<double, double> key2 = std::make_pair(12, 50);
   EXPECT_LT(n1, key2);
+}
+/**
+ * @brief checks if the key value is less than
+ *        second key value
+ */
+TEST(NodeKeyCompare, True) {
+  Node n1(2, 4);
+  std::pair<double, double> key = std::make_pair(12, 43);
+  n1.setkey(key);
+  std::pair<double, double> key2 = std::make_pair(14, 50);
+  EXPECT_TRUE(n1 < key2);
+}
+/**
+ * @brief checks if the key value is less than
+ *        second key value
+ */
+TEST(NodeKeyCompare, False) {
+  Node n1(2, 4);
+  std::pair<double, double> key = std::make_pair(12, 43);
+  n1.setkey(key);
+  std::pair<double, double> key2 = std::make_pair(1, 5);
+  EXPECT_FALSE(n1 < key2);
 }
 /**
  * @brief      Checks if the operator overloading of +,!= work.
@@ -222,7 +245,7 @@ TEST(PriorityQFindElementTest, ElementNotFound) {
 /**
  * @brief checks the struct compare
  */
-TEST(ComparatorTest,False) {
+TEST(ComparatorTest, False) {
   Node n1(23, 12), n2(2, 4);
   std::pair<double, double> k1 = std::make_pair(2, 44);
   std::pair<double, double> k2 = std::make_pair(23, 44);
@@ -234,7 +257,7 @@ TEST(ComparatorTest,False) {
 /**
  * @brief checks the struct compare
  */
-TEST(ComparatorTest,True) {
+TEST(ComparatorTest, True) {
   Node n1(23, 12), n2(23, 4);
   std::pair<double, double> k1 = std::make_pair(2, 44);
   std::pair<double, double> k2 = std::make_pair(23, 44);
@@ -243,4 +266,123 @@ TEST(ComparatorTest,True) {
   compare c1;
   EXPECT_FALSE(c1(n1, n2));
 }
-
+/**
+ * @brief checks the struct compare
+ */
+TEST(ComparatorTest, AlsoFalse) {
+  Node n1(23, 12), n2(23, 4);
+  std::pair<double, double> k1 = std::make_pair(2, 44);
+  std::pair<double, double> k2 = std::make_pair(2, 47);
+  n1.setkey(k1);
+  n2.setkey(k2);
+  compare c1;
+  EXPECT_FALSE(c1(n1, n2));
+}
+/**
+ * @brief      Checks if the priority queue
+ *             contains the removed Node.
+ *
+ *
+ *
+ */
+TEST(PriorityQRemoveElementTest, False) {
+  DstarLite dsl;
+  Node n1(2, 4), n2(4, 4), n3(6, 7), n4(23, 34), n5(12, 42);
+  dsl.U.push(n1);
+  dsl.U.push(n2);
+  dsl.U.push(n3);
+  dsl.U.push(n4);
+  EXPECT_FALSE(dsl.U.remove(n5));
+}
+/**
+ * @brief checks operator << overload
+ */
+TEST(OstreamTest, True) {
+  Node start(1, 2);
+  Grid g(10, 10);
+  Node goal(8, 3);
+  g.goal = goal;
+  g.start = start;
+  Node x(4, 3);
+  g.grid[x._x][x._y] = 'x';
+  Node tl(3, 5), br(5, 6);
+  g.obstacle(tl, br);
+  ASSERT_TRUE(std::cout << g);
+}
+/**
+ * @brief checks if initialize method works
+ *        by checking if the goal rhs is set to 0
+ */
+TEST(InitializeTest, Equal) {
+  Node start(1, 2);
+  Grid grid(10, 10);
+  Node goal(8, 3);
+  grid.goal = goal;
+  grid.start = start;
+  int km = 0;
+  DstarLite dsl;
+  std::vector<std::vector<double> > g(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  std::vector<std::vector<double> > rhs(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  dsl.initialize(grid, g, rhs, km);
+  ASSERT_EQ(rhs[grid.goal._y][grid.goal._x], 0);
+}
+/**
+ * @brief checks the functionality of the neighbour method
+ *        by checking if all the 8 neighbours are returned
+ */
+TEST(NeighbourTest, Equal) {
+  Node start(5, 4);
+  Grid grid(10, 10);
+  DstarLite dsl;
+  std::vector<Node> neighbours = dsl.getNeighbours(grid, start);
+  ASSERT_EQ(neighbours.size(), 8);
+}
+/**
+ * @brief checks the functionality of calculate key
+ *        by comparing the key values
+ *
+ */
+TEST(CalculateKeyTest, LessThan) {
+  DstarLite dsl;
+  Grid grid(10, 10);
+  int km = 1000;
+  Node s(3, 4);
+  grid.start = s;
+  Node m(5, 6);
+  std::vector<std::vector<double> > g(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  std::vector<std::vector<double> > rhs(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  std::pair<double, double> key = dsl.calculateKey(grid, m, g, rhs, km);
+  EXPECT_LE(key.second, key.first);
+}
+/**
+ * @brief checks the functionality of Scan methods
+ *        by checking the vector size returned
+ *        is greater than 8 the node's actual
+ *        neighbours
+ */
+TEST(ScanTest, NotEqual) {
+  Node start(1, 2);
+  Node curr(7, 7);
+  Grid g(10, 10);
+  Node goal(8, 3);
+  g.goal = goal;
+  g.start = start;
+  Node x(4, 3);
+  Node tl(3, 5), br(5, 6);
+  g.obstacle(tl, br);
+  int range = 2;
+  size_t nei = 8;
+  DstarLite dsl;
+  std::vector<std::vector<double> > cost(g._rows,
+                                         std::vector<double>(g._columns, 1));
+  std::vector<Node> list = dsl.scan(g, curr, cost, range);
+  EXPECT_GT(list.size(), nei);
+}
