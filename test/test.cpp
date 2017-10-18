@@ -339,7 +339,8 @@ TEST(NeighbourTest, Equal) {
   Grid grid(10, 10);
   DstarLite dsl;
   std::vector<Node> neighbours = dsl.getNeighbours(grid, start);
-  ASSERT_EQ(neighbours.size(), 8);
+  size_t n = 8;
+  ASSERT_EQ(neighbours.size(), n);
 }
 /**
  * @brief checks the functionality of calculate key
@@ -385,4 +386,37 @@ TEST(ScanTest, NotEqual) {
                                          std::vector<double>(g._columns, 1));
   std::vector<Node> list = dsl.scan(g, curr, cost, range);
   EXPECT_GT(list.size(), nei);
+}
+/**
+ * @brief  checks if the compute path and updateVertex methods
+ *         work by checking the initial rhs value of the last node and its
+ *         new value after running the functions
+ */
+TEST(ComputePathTest, Notequal) {
+  Node start(20, 6);
+  Node goal(6, 41);
+  Node tl(5, 7);
+  Node br(20, 11);
+  int km = 0;
+  Grid grid(51, 51);
+  grid.start = start;
+  grid.goal = goal;
+  grid.obstacle(tl, br);
+  DstarLite dsl;
+  Node last = start;
+  // g values
+  std::vector<std::vector<double> > g(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  // rhs values
+  std::vector<std::vector<double> > rhs(
+      grid._rows,
+      std::vector<double>(grid._columns, grid._rows * grid._columns + 1));
+  double rhsOld = rhs[last._y][last._x];
+  // costs
+  std::vector<std::vector<double> > cost(grid._rows,
+                                         std::vector<double>(grid._columns, 1));
+  dsl.initialize(grid, g, rhs, km);
+  dsl.computePath(grid, g, rhs, cost, km);
+  EXPECT_NE(rhsOld, rhs[last._y][last._x]);
 }
